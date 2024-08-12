@@ -1,651 +1,642 @@
 /* eslint-disable */
 
-const stepSlider = document.querySelector('.splide')
 
-const slider = new Splide(stepSlider, {
-  type: 'fade',
-  pagination: false,
-  drag: false,
-  keyboard: false,
-  autoHeight: true,
-}).mount();
-
-const steps = document.querySelectorAll('.step-slide');
-const radioButtons = document.querySelectorAll('.radio-wrapper');
-const splideSlides = document.querySelectorAll('.splide__slide');
-const splideNext = document.querySelector('.splide__arrow--next');
-const splidePrev = document.querySelector('.splide__arrow--prev');
-
-const formsObject = {
-  "Request a proposal": `<div>
-      <div class="form-title-wr">
-        <h2 class="text-size-2em">Request a proposal</h2>
-        <h2 class="text-size-1_25rem is-regular is--opacity60">step 3/3</h2>
-      </div>
-      <div class="form-content-wr">
-        <div class="c-form_field is-autocompleted">
-          <input
-            class="form-text-field email-autocomplete w-input"
-            maxlength="256"
-            name="email-2"
-            data-name="Email 2"
-            placeholder="Email"
-            type="email"
-          />
-          <div class="c-error-message"><div>wrong mail type</div></div>
-        </div>
-        <div class="form-adress-wr">
-          <div class="c-form_field">
-            <label for="Property-address" class="c-text-2 cc-field-header"
-              >Property address</label
-            ><input
-              class="form-text-field w-input"
-              autocomplete="street-address"
-              maxlength="256"
-              name="Property-address"
-              data-name="Property address"
-              ms-code-input="address"
-              placeholder=""
-              type="text"
-              id="Property-address"
-              required=""
-            />
-          </div>
-          <div class="form-content-wr-2col">
-            <div class="c-form_field">
-              <label for="Lot-ZIP-2" class="c-text-2 cc-field-header"
-                >ZIP code</label
-              ><input
-                class="form-text-field w-input"
-                autocomplete="postal-code"
-                maxlength="256"
-                name="Lot-ZIP-2"
-                data-name="Lot ZIP 2"
-                ms-code-input="postal-code"
-                placeholder=""
-                type="text"
-                id="Lot-ZIP-2"
-                required=""
-              />
-            </div>
-            <div class="c-form_field">
-              <label for="City-2" class="c-text-2 cc-field-header"
-                ><strong>City</strong></label
-              ><input
-                class="form-text-field w-input"
-                maxlength="256"
-                name="City-2"
-                data-name="City 2"
-                ms-code-input="city"
-                placeholder=""
-                type="text"
-                id="City-2"
-                required=""
-              />
-            </div>
-          </div>
-          <div class="form-content-wr-2col">
-            <div class="c-form_field">
-              <label for="Region" class="c-text-2 cc-field-header">Region</label
-              ><input
-                class="form-text-field w-input"
-                maxlength="256"
-                name="Region-2"
-                data-name="Region 2"
-                ms-code-input="region"
-                placeholder=""
-                type="text"
-                id="Region"
-                required=""
-              />
-            </div>
-            <div class="c-form_field">
-              <label for="Country-2" class="c-text-2 cc-field-header"
-                >Country</label
-              ><input
-                class="form-text-field w-input"
-                maxlength="256"
-                name="Country-2"
-                data-name="Country 2"
-                ms-code-input="country"
-                placeholder=""
-                type="text"
-                id="Country-2"
-                required=""
-              />
-            </div>
-          </div>
-        </div>
-        <div class="c-form_field">
-          <label for="Project-name-2" class="c-text-2 cc-field-header"
-            >Project name (optional)</label
-          ><input
-            class="form-text-field w-input"
-            maxlength="256"
-            name="Project-name-2"
-            data-name="Project Name 2"
-            placeholder=""
-            type="text"
-            id="Project-name-2"
-          />
-        </div>
-        <div class="c-form_field">
-          <label for="Details-optional-2" class="c-text-2 cc-field-header"
-            >Details (optional)</label
-          ><textarea
-            placeholder=""
-            maxlength="5000"
-            id="Details-optional-2"
-            name="Details-optional-2"
-            data-name="Details Optional 2"
-            class="form-text-field w-input"
-          ></textarea>
-        </div>
-      </div>
-    </div>`,
-  "Monthly Parking": `<div>
-      <div class="form-title-wr">
-        <h2 class="text-size-2em">Monthly parking</h2>
-        <h2 class="text-size-1_25rem is-regular is--opacity60">step 3/3</h2>
-      </div>
-      <div class="form-content-wr">
-        <div class="c-form_field is-autocompleted">
-          <input
-            class="form-text-field email-autocomplete w-input"
-            maxlength="256"
-            name="email-2"
-            data-name="Email 2"
-            placeholder="Email"
-            type="email"
-          />
-          <div class="c-error-message"><div>wrong mail type</div></div>
-        </div>
-        <div class="form-adress-wr">
-          <div class="c-form_field">
-            <label for="Lot-address-3" class="c-text-2 cc-field-header"
-              >Lot address</label
-            ><input
-              class="form-text-field w-input"
-              autocomplete="street-address"
-              maxlength="256"
-              name="Lot-address-3"
-              data-name="Lot Address 3"
-              placeholder=""
-              type="text"
-              id="Lot-address-3"
-              required=""
-            />
-          </div>
-          <div class="form-content-wr-2col">
-            <div class="c-form_field">
-              <label for="Lot-ZIP-2" class="c-text-2 cc-field-header"
-                >ZIP code</label
-              ><input
-                class="form-text-field w-input"
-                autocomplete="postal-code"
-                maxlength="256"
-                name="Lot-ZIP-2"
-                data-name="Lot ZIP 2"
-                placeholder=""
-                type="text"
-                id="Lot-ZIP-2"
-                required=""
-              />
-            </div>
-            <div class="c-form_field">
-              <label for="City-2" class="c-text-2 cc-field-header"
-                ><strong>City</strong></label
-              ><input
-                class="form-text-field w-input"
-                maxlength="256"
-                name="City-2"
-                data-name="City 2"
-                placeholder=""
-                type="text"
-                id="City-2"
-                required=""
-              />
-            </div>
-          </div>
-          <div class="form-content-wr-2col">
-            <div class="c-form_field">
-              <label for="Region" class="c-text-2 cc-field-header">Region</label
-              ><input
-                class="form-text-field w-input"
-                maxlength="256"
-                name="Region-2"
-                data-name="Region 2"
-                placeholder=""
-                type="text"
-                id="Region"
-                required=""
-              />
-            </div>
-            <div class="c-form_field">
-              <label for="Country-2" class="c-text-2 cc-field-header"
-                >Country</label
-              ><input
-                class="form-text-field w-input"
-                autocomplete="postal-code"
-                maxlength="256"
-                name="Country-2"
-                data-name="Country 2"
-                placeholder=""
-                type="text"
-                id="Country-2"
-                required=""
-              />
-            </div>
-          </div>
-        </div>
-        <div class="c-form_field">
-          <label for="Landmark-Intersection" class="c-text-2 cc-field-header"
-            >Landmark/Intersection</label
-          ><input
-            class="form-text-field w-input"
-            maxlength="256"
-            name="Landmark-Intersection"
-            data-name="Landmark/Intersection"
-            placeholder=""
-            type="text"
-            id="Landmark-Intersection"
-            required=""
-          />
-        </div>
-        <div class="select-wrapper">
-          <label for="Access-Type" class="c-text-2 cc-field-header"
-            >Access Type</label
-          ><select
-            id="Access-Type"
-            name="Access-Type"
-            data-name="Access Type"
-            required=""
-            class="select-field cc-select w-select"
-          >
-            <option value="24/7">24/7</option>
-            <option value="Limited">Limited</option>
-          </select>
-        </div>
-        <div class="c-form_field">
-          <label for="of-spaces" class="c-text-2 cc-field-header"
-            ># of spaces</label
-          ><input
-            class="form-text-field w-input"
-            maxlength="256"
-            name="of-spaces"
-            data-name="# of spaces"
-            min="0"
-            placeholder=""
-            type="number"
-            id="of-spaces"
-            required=""
-          />
-        </div>
-        <div class="c-form_field">
-          <label for="Details-optional-2" class="c-text-2 cc-field-header"
-            >Details (optional)</label
-          ><textarea
-            placeholder=""
-            maxlength="5000"
-            id="Details-optional-2"
-            name="Details-optional-2"
-            data-name="Details Optional 2"
-            class="form-text-field w-input"
-          ></textarea>
-        </div>
-      </div>
-    </div>`,
-  "Appeal a Violation": `<div>
-      <div class="form-title-wr">
-        <h2 class="text-size-2em">Appeal a violation</h2>
-        <h2 class="text-size-1_25rem is-regular is--opacity60">step 3/3</h2>
-      </div>
-      <div class="form-content-wr">
-        <div class="c-form_field is-autocompleted">
-          <input
-            class="form-text-field email-autocomplete w-input"
-            maxlength="256"
-            name="email-2"
-            data-name="Email 2"
-            placeholder="Email"
-            type="email"
-          />
-          <div class="c-error-message"><div>wrong mail type</div></div>
-        </div>
-        <div class="c-form_field">
-          <label for="Violation" class="c-text-2 cc-field-header"
-            >Violation #</label
-          ><input
-            class="form-text-field w-input"
-            max="999999999999"
-            maxlength="256"
-            name="Violation"
-            data-name="Violation #"
-            min="000000000001"
-            placeholder=""
-            type="text"
-            id="Violation"
-            required=""
-          />
-        </div>
-        <div class="c-form_field">
-          <label for="Plate" class="c-text-2 cc-field-header">Plate #</label
-          ><input
-            class="form-text-field w-input"
-            max="999999999999"
-            maxlength="256"
-            name="Plate"
-            data-name="Plate #"
-            min="000000000001"
-            placeholder=""
-            type="text"
-            id="Plate"
-            required=""
-          />
-        </div>
-        <div class="c-form_field">
-          <label for="Details-optional-2" class="c-text-2 cc-field-header"
-            >Details (optional)</label
-          ><textarea
-            placeholder=""
-            maxlength="5000"
-            id="Details-optional-2"
-            name="Details-optional-2"
-            data-name="Details Optional 2"
-            class="form-text-field w-input"
-          ></textarea>
-        </div>
-        <div class="c-form_field is--attach-field">
-          <div class="icon-1-25rem w-embed">
-            <svg
-              width="100%"
-              height="100%"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="0.5"
-                y="0.5"
-                width="19"
-                height="19"
-                rx="5.5"
-                stroke="#292B2E"
-              ></rect>
-              <rect x="5" y="9" width="10" height="2" fill="#292B2E"></rect>
-              <rect
-                x="11"
-                y="5"
-                width="10"
-                height="2"
-                transform="rotate(90 11 5)"
-                fill="#292B2E"
-              ></rect>
-            </svg>
-          </div>
-          <label for="Details-optional-3" class="c-text-2 cc-field-attach"
-            >Attach an image</label
-          >
-        </div>
-      </div>
-    </div>`,
-  "Rent Space": `<div>
-      <div class="form-title-wr">
-        <h2 class="text-size-2em">Rent space</h2>
-        <h2 class="text-size-1_25rem is-regular is--opacity60">step 3/3</h2>
-      </div>
-      <div class="form-content-wr">
-        <div class="c-form_field is-autocompleted">
-          <input
-            class="form-text-field email-autocomplete w-input"
-            maxlength="256"
-            name="email-2"
-            data-name="Email 2"
-            placeholder="Email"
-            type="email"
-          />
-          <div class="c-error-message"><div>wrong mail type</div></div>
-        </div>
-        <div class="form-adress-wr">
-          <div class="c-form_field">
-            <label for="Lot-address-2" class="c-text-2 cc-field-header"
-              >Lot address</label
-            ><input
-              class="form-text-field w-input"
-              autocomplete="street-address"
-              maxlength="256"
-              name="Lot-address"
-              data-name="Lot address"
-              placeholder=""
-              type="text"
-              id="Lot-address-2"
-              required=""
-            />
-          </div>
-          <div class="form-content-wr-2col">
-            <div class="c-form_field">
-              <label for="Lot-ZIP" class="c-text-2 cc-field-header"
-                >ZIP code</label
-              ><input
-                class="form-text-field w-input"
-                autocomplete="postal-code"
-                maxlength="256"
-                name="Lot-ZIP"
-                data-name="Lot ZIP"
-                placeholder=""
-                type="text"
-                id="Lot-ZIP"
-                required=""
-              />
-            </div>
-            <div class="c-form_field">
-              <label for="City" class="c-text-2 cc-field-header"
-                ><strong>City</strong></label
-              ><input
-                class="form-text-field w-input"
-                maxlength="256"
-                name="City"
-                data-name="City"
-                placeholder=""
-                type="text"
-                id="City"
-                required=""
-              />
-            </div>
-          </div>
-          <div class="form-content-wr-2col">
-            <div class="c-form_field">
-              <label for="Region" class="c-text-2 cc-field-header">Region</label
-              ><input
-                class="form-text-field w-input"
-                maxlength="256"
-                name="Region-2"
-                data-name="Region 2"
-                placeholder=""
-                type="text"
-                id="Region"
-                required=""
-              />
-            </div>
-            <div class="c-form_field">
-              <label for="Country" class="c-text-2 cc-field-header"
-                >Country</label
-              ><input
-                class="form-text-field w-input"
-                autocomplete="postal-code"
-                maxlength="256"
-                name="Country"
-                data-name="Country"
-                placeholder=""
-                type="text"
-                id="Country"
-                required=""
-              />
-            </div>
-          </div>
-        </div>
-        <div class="c-form_field">
-          <label for="Landmark-Intersection-3" class="c-text-2 cc-field-header"
-            >Landmark/Intersection</label
-          ><input
-            class="form-text-field w-input"
-            maxlength="256"
-            name="Landmark-Intersection-3"
-            data-name="Landmark Intersection 3"
-            placeholder=""
-            type="text"
-            id="Landmark-Intersection-3"
-            required=""
-          />
-        </div>
-        <div class="form-content-wr-2col">
-          <div class="c-form_field">
-            <label for="Event-start" class="c-text-2 cc-field-header"
-              >Event start</label
-            ><input
-              type="datetime-local"
-              name="Event start"
-              class="form-text-field"
-              value="2024-01-01T12:00"
-            />
-          </div>
-          <div class="c-form_field">
-            <label for="Event-End" class="c-text-2 cc-field-header"
-              >Event End</label
-            ><input
-              type="datetime-local"
-              name="Event End"
-              class="form-text-field"
-              value="2024-01-01T13:00"
-            />
-          </div>
-        </div>
-        <div class="c-form_field">
-          <label for="Event-footprint" class="c-text-2 cc-field-header"
-            >Event footprint</label
-          ><input
-            class="form-text-field w-input"
-            maxlength="256"
-            name="Event-footprint"
-            data-name="Event footprint"
-            placeholder=""
-            type="text"
-            id="Event-footprint"
-            required=""
-          />
-        </div>
-        <div class="c-form_field">
-          <label for="Details-optional" class="c-text-2 cc-field-header"
-            >Details (optional)</label
-          ><textarea
-            placeholder=""
-            maxlength="5000"
-            id="Details-optional"
-            name="Details-optional"
-            data-name="Details (optional)"
-            class="form-text-field w-input"
-          ></textarea>
-        </div>
-      </div>
-    </div>`,
-  "Something Else": `<div>
-      <div class="form-title-wr">
-        <h2 class="text-size-2em">Ask us</h2>
-        <h2 class="text-size-1_25rem is-regular is--opacity60">step 3/3</h2>
-      </div>
-      <div class="form-content-wr">
-        <div class="c-form_field">
-          <div class="c-form_field is-autocompleted">
-            <input
-              class="form-text-field email-autocomplete w-input"
-              maxlength="256"
-              name="email-2"
-              data-name="Email 2"
-              placeholder="Email"
-              type="email"
-            />
-            <div class="c-error-message"><div>wrong mail type</div></div>
-          </div>
-          <label for="Your-message" class="c-text-2 cc-field-header"
-            >Your message</label
-          ><textarea
-            required=""
-            placeholder=""
-            maxlength="5000"
-            id="Your-message"
-            name="Your-message"
-            data-name="Your message"
-            class="form-text-field w-input"
-          ></textarea>
-        </div>
-      </div>
-    </div>`
+const timeZoneCityToCountry = {
+  "Andorra": "Andorra",
+  "Dubai": "United Arab Emirates",
+  "Kabul": "Afghanistan",
+  "Tirane": "Albania",
+  "Yerevan": "Armenia",
+  "Casey": "Antarctica",
+  "Davis": "Antarctica",
+  "Mawson": "Antarctica",
+  "Palmer": "Antarctica",
+  "Rothera": "Antarctica",
+  "Troll": "Antarctica",
+  "Vostok": "Antarctica",
+  "Buenos_Aires": "Argentina",
+  "Cordoba": "Argentina",
+  "Salta": "Argentina",
+  "Jujuy": "Argentina",
+  "Tucuman": "Argentina",
+  "Catamarca": "Argentina",
+  "La_Rioja": "Argentina",
+  "San_Juan": "Argentina",
+  "Mendoza": "Argentina",
+  "San_Luis": "Argentina",
+  "Rio_Gallegos": "Argentina",
+  "Ushuaia": "Argentina",
+  "Pago_Pago": "Samoa (American)",
+  "Vienna": "Austria",
+  "Lord_Howe": "Australia",
+  "Macquarie": "Australia",
+  "Hobart": "Australia",
+  "Melbourne": "Australia",
+  "Sydney": "Australia",
+  "Broken_Hill": "Australia",
+  "Brisbane": "Australia",
+  "Lindeman": "Australia",
+  "Adelaide": "Australia",
+  "Darwin": "Australia",
+  "Perth": "Australia",
+  "Eucla": "Australia",
+  "Baku": "Azerbaijan",
+  "Barbados": "Barbados",
+  "Dhaka": "Bangladesh",
+  "Brussels": "Belgium",
+  "Sofia": "Bulgaria",
+  "Bermuda": "Bermuda",
+  "La_Paz": "Bolivia",
+  "Noronha": "Brazil",
+  "Belem": "Brazil",
+  "Fortaleza": "Brazil",
+  "Recife": "Brazil",
+  "Araguaina": "Brazil",
+  "Maceio": "Brazil",
+  "Bahia": "Brazil",
+  "Sao_Paulo": "Brazil",
+  "Campo_Grande": "Brazil",
+  "Cuiaba": "Brazil",
+  "Santarem": "Brazil",
+  "Porto_Velho": "Brazil",
+  "Boa_Vista": "Brazil",
+  "Manaus": "Brazil",
+  "Eirunepe": "Brazil",
+  "Rio_Branco": "Brazil",
+  "Thimphu": "Bhutan",
+  "Minsk": "Belarus",
+  "Belize": "Belize",
+  "St_Johns": "Canada",
+  "Halifax": "Canada",
+  "Glace_Bay": "Canada",
+  "Moncton": "Canada",
+  "Goose_Bay": "Canada",
+  "Toronto": "Canada",
+  "Iqaluit": "Canada",
+  "Winnipeg": "Canada",
+  "Resolute": "Canada",
+  "Rankin_Inlet": "Canada",
+  "Regina": "Canada",
+  "Swift_Current": "Canada",
+  "Edmonton": "Canada",
+  "Cambridge_Bay": "Canada",
+  "Inuvik": "Canada",
+  "Dawson_Creek": "Canada",
+  "Fort_Nelson": "Canada",
+  "Whitehorse": "Canada",
+  "Dawson": "Canada",
+  "Vancouver": "Canada",
+  "Zurich": "Switzerland",
+  "Abidjan": "Côte d'Ivoire",
+  "Rarotonga": "Cook Islands",
+  "Santiago": "Chile",
+  "Punta_Arenas": "Chile",
+  "Easter": "Chile",
+  "Shanghai": "China",
+  "Urumqi": "China",
+  "Bogota": "Colombia",
+  "Costa_Rica": "Costa Rica",
+  "Havana": "Cuba",
+  "Cape_Verde": "Cape Verde",
+  "Nicosia": "Cyprus",
+  "Famagusta": "Cyprus",
+  "Prague": "Czech Republic",
+  "Berlin": "Germany",
+  "Santo_Domingo": "Dominican Republic",
+  "Algiers": "Algeria",
+  "Guayaquil": "Ecuador",
+  "Galapagos": "Ecuador",
+  "Tallinn": "Estonia",
+  "Cairo": "Egypt",
+  "El_Aaiun": "Western Sahara",
+  "Madrid": "Spain",
+  "Ceuta": "Spain",
+  "Canary": "Spain",
+  "Helsinki": "Finland",
+  "Fiji": "Fiji",
+  "Stanley": "Falkland Islands",
+  "Kosrae": "Micronesia",
+  "Faroe": "Faroe Islands",
+  "Paris": "France",
+  "London": "Britain (UK)",
+  "Tbilisi": "Georgia",
+  "Cayenne": "French Guiana",
+  "Gibraltar": "Gibraltar",
+  "Nuuk": "Greenland",
+  "Danmarkshavn": "Greenland",
+  "Scoresbysund": "Greenland",
+  "Thule": "Greenland",
+  "Athens": "Greece",
+  "South_Georgia": "South Georgia & the South Sandwich Islands",
+  "Guatemala": "Guatemala",
+  "Guam": "Guam",
+  "Bissau": "Guinea-Bissau",
+  "Guyana": "Guyana",
+  "Hong_Kong": "Hong Kong",
+  "Tegucigalpa": "Honduras",
+  "Port-au-Prince": "Haiti",
+  "Budapest": "Hungary",
+  "Jakarta": "Indonesia",
+  "Pontianak": "Indonesia",
+  "Makassar": "Indonesia",
+  "Jayapura": "Indonesia",
+  "Dublin": "Ireland",
+  "Jerusalem": "Israel",
+  "Kolkata": "India",
+  "Chagos": "British Indian Ocean Territory",
+  "Baghdad": "Iraq",
+  "Tehran": "Iran",
+  "Rome": "Italy",
+  "Jamaica": "Jamaica",
+  "Amman": "Jordan",
+  "Tokyo": "Japan",
+  "Nairobi": "Kenya",
+  "Bishkek": "Kyrgyzstan",
+  "Tarawa": "Kiribati",
+  "Kanton": "Kiribati",
+  "Kiritimati": "Kiribati",
+  "Pyongyang": "Korea (North)",
+  "Seoul": "Korea (South)",
+  "Almaty": "Kazakhstan",
+  "Qyzylorda": "Kazakhstan",
+  "Qostanay": "Kazakhstan",
+  "Aqtobe": "Kazakhstan",
+  "Aqtau": "Kazakhstan",
+  "Atyrau": "Kazakhstan",
+  "Oral": "Kazakhstan",
+  "Beirut": "Lebanon",
+  "Colombo": "Sri Lanka",
+  "Monrovia": "Liberia",
+  "Vilnius": "Lithuania",
+  "Riga": "Latvia",
+  "Tripoli": "Libya",
+  "Casablanca": "Morocco",
+  "Chisinau": "Moldova",
+  "Kwajalein": "Marshall Islands",
+  "Yangon": "Myanmar (Burma)",
+  "Ulaanbaatar": "Mongolia",
+  "Hovd": "Mongolia",
+  "Choibalsan": "Mongolia",
+  "Macau": "Macau",
+  "Martinique": "Martinique",
+  "Malta": "Malta",
+  "Mauritius": "Mauritius",
+  "Maldives": "Maldives",
+  "Mexico_City": "Mexico",
+  "Cancun": "Mexico",
+  "Merida": "Mexico",
+  "Monterrey": "Mexico",
+  "Matamoros": "Mexico",
+  "Chihuahua": "Mexico",
+  "Ciudad_Juarez": "Mexico",
+  "Ojinaga": "Mexico",
+  "Mazatlan": "Mexico",
+  "Bahia_Banderas": "Mexico",
+  "Hermosillo": "Mexico",
+  "Tijuana": "Mexico",
+  "Kuching": "Malaysia",
+  "Maputo": "Mozambique",
+  "Windhoek": "Namibia",
+  "Noumea": "New Caledonia",
+  "Norfolk": "Norfolk Island",
+  "Lagos": "Nigeria",
+  "Managua": "Nicaragua",
+  "Kathmandu": "Nepal",
+  "Nauru": "Nauru",
+  "Niue": "Niue",
+  "Auckland": "New Zealand",
+  "Chatham": "New Zealand",
+  "Panama": "Panama",
+  "Lima": "Peru",
+  "Tahiti": "French Polynesia",
+  "Marquesas": "French Polynesia",
+  "Gambier": "French Polynesia",
+  "Port_Moresby": "Papua New Guinea",
+  "Bougainville": "Papua New Guinea",
+  "Manila": "Philippines",
+  "Karachi": "Pakistan",
+  "Warsaw": "Poland",
+  "Miquelon": "St Pierre & Miquelon",
+  "Pitcairn": "Pitcairn",
+  "Puerto_Rico": "Puerto Rico",
+  "Gaza": "Palestine",
+  "Hebron": "Palestine",
+  "Lisbon": "Portugal",
+  "Madeira": "Portugal",
+  "Azores": "Portugal",
+  "Palau": "Palau",
+  "Asuncion": "Paraguay",
+  "Qatar": "Qatar",
+  "Bucharest": "Romania",
+  "Belgrade": "Serbia",
+  "Kaliningrad": "Russia",
+  "Moscow": "Russia",
+  "Simferopol": "Russia",
+  "Kirov": "Russia",
+  "Volgograd": "Russia",
+  "Astrakhan": "Russia",
+  "Saratov": "Russia",
+  "Ulyanovsk": "Russia",
+  "Samara": "Russia",
+  "Yekaterinburg": "Russia",
+  "Omsk": "Russia",
+  "Novosibirsk": "Russia",
+  "Barnaul": "Russia",
+  "Tomsk": "Russia",
+  "Novokuznetsk": "Russia",
+  "Krasnoyarsk": "Russia",
+  "Irkutsk": "Russia",
+  "Chita": "Russia",
+  "Yakutsk": "Russia",
+  "Khandyga": "Russia",
+  "Vladivostok": "Russia",
+  "Ust-Nera": "Russia",
+  "Magadan": "Russia",
+  "Sakhalin": "Russia",
+  "Srednekolymsk": "Russia",
+  "Kamchatka": "Russia",
+  "Anadyr": "Russia",
+  "Riyadh": "Saudi Arabia",
+  "Guadalcanal": "Solomon Islands",
+  "Khartoum": "Sudan",
+  "Singapore": "Singapore",
+  "Paramaribo": "Suriname",
+  "Juba": "South Sudan",
+  "Sao_Tome": "Sao Tome & Principe",
+  "El_Salvador": "El Salvador",
+  "Damascus": "Syria",
+  "Grand_Turk": "Turks & Caicos Is",
+  "Ndjamena": "Chad",
+  "Bangkok": "Thailand",
+  "Dushanbe": "Tajikistan",
+  "Fakaofo": "Tokelau",
+  "Dili": "East Timor",
+  "Ashgabat": "Turkmenistan",
+  "Tunis": "Tunisia",
+  "Tongatapu": "Tonga",
+  "Istanbul": "Turkey",
+  "Taipei": "Taiwan",
+  "Kyiv": "Ukraine",
+  "New_York": "United States",
+  "Detroit": "United States",
+  "Louisville": "United States",
+  "Monticello": "United States",
+  "Indianapolis": "United States",
+  "Vincennes": "United States",
+  "Winamac": "United States",
+  "Marengo": "United States",
+  "Petersburg": "United States",
+  "Vevay": "United States",
+  "Chicago": "United States",
+  "Tell_City": "United States",
+  "Knox": "United States",
+  "Menominee": "United States",
+  "Center": "United States",
+  "New_Salem": "United States",
+  "Beulah": "United States",
+  "Denver": "United States",
+  "Boise": "United States",
+  "Phoenix": "United States",
+  "Los_Angeles": "United States",
+  "Anchorage": "United States",
+  "Juneau": "United States",
+  "Sitka": "United States",
+  "Metlakatla": "United States",
+  "Yakutat": "United States",
+  "Nome": "United States",
+  "Adak": "United States",
+  "Honolulu": "United States",
+  "Montevideo": "Uruguay",
+  "Samarkand": "Uzbekistan",
+  "Tashkent": "Uzbekistan",
+  "Caracas": "Venezuela",
+  "Ho_Chi_Minh": "Vietnam",
+  "Efate": "Vanuatu",
+  "Apia": "Samoa (western)",
+  "Johannesburg": "South Africa",
+  "Antigua": "Antigua & Barbuda",
+  "Anguilla": "Anguilla",
+  "Luanda": "Angola",
+  "McMurdo": "Antarctica",
+  "DumontDUrville": "Antarctica",
+  "Syowa": "Antarctica",
+  "Aruba": "Aruba",
+  "Mariehamn": "Åland Islands",
+  "Sarajevo": "Bosnia & Herzegovina",
+  "Ouagadougou": "Burkina Faso",
+  "Bahrain": "Bahrain",
+  "Bujumbura": "Burundi",
+  "Porto-Novo": "Benin",
+  "St_Barthelemy": "St Barthelemy",
+  "Brunei": "Brunei",
+  "Kralendijk": "Caribbean NL",
+  "Nassau": "Bahamas",
+  "Gaborone": "Botswana",
+  "Blanc-Sablon": "Canada",
+  "Atikokan": "Canada",
+  "Creston": "Canada",
+  "Cocos": "Cocos (Keeling) Islands",
+  "Kinshasa": "Congo (Dem. Rep.)",
+  "Lubumbashi": "Congo (Dem. Rep.)",
+  "Bangui": "Central African Rep.",
+  "Brazzaville": "Congo (Rep.)",
+  "Douala": "Cameroon",
+  "Curacao": "Curaçao",
+  "Christmas": "Christmas Island",
+  "Busingen": "Germany",
+  "Djibouti": "Djibouti",
+  "Copenhagen": "Denmark",
+  "Dominica": "Dominica",
+  "Asmara": "Eritrea",
+  "Addis_Ababa": "Ethiopia",
+  "Chuuk": "Micronesia",
+  "Pohnpei": "Micronesia",
+  "Libreville": "Gabon",
+  "Grenada": "Grenada",
+  "Guernsey": "Guernsey",
+  "Accra": "Ghana",
+  "Banjul": "Gambia",
+  "Conakry": "Guinea",
+  "Guadeloupe": "Guadeloupe",
+  "Malabo": "Equatorial Guinea",
+  "Zagreb": "Croatia",
+  "Isle_of_Man": "Isle of Man",
+  "Reykjavik": "Iceland",
+  "Jersey": "Jersey",
+  "Phnom_Penh": "Cambodia",
+  "Comoro": "Comoros",
+  "St_Kitts": "St Kitts & Nevis",
+  "Kuwait": "Kuwait",
+  "Cayman": "Cayman Islands",
+  "Vientiane": "Laos",
+  "St_Lucia": "St Lucia",
+  "Vaduz": "Liechtenstein",
+  "Maseru": "Lesotho",
+  "Luxembourg": "Luxembourg",
+  "Monaco": "Monaco",
+  "Podgorica": "Montenegro",
+  "Marigot": "St Martin (French)",
+  "Antananarivo": "Madagascar",
+  "Majuro": "Marshall Islands",
+  "Skopje": "North Macedonia",
+  "Bamako": "Mali",
+  "Saipan": "Northern Mariana Islands",
+  "Nouakchott": "Mauritania",
+  "Montserrat": "Montserrat",
+  "Blantyre": "Malawi",
+  "Kuala_Lumpur": "Malaysia",
+  "Niamey": "Niger",
+  "Amsterdam": "Netherlands",
+  "Oslo": "Norway",
+  "Muscat": "Oman",
+  "Reunion": "Réunion",
+  "Kigali": "Rwanda",
+  "Mahe": "Seychelles",
+  "Stockholm": "Sweden",
+  "St_Helena": "St Helena",
+  "Ljubljana": "Slovenia",
+  "Longyearbyen": "Svalbard & Jan Mayen",
+  "Bratislava": "Slovakia",
+  "Freetown": "Sierra Leone",
+  "San_Marino": "San Marino",
+  "Dakar": "Senegal",
+  "Mogadishu": "Somalia",
+  "Lower_Princes": "St Maarten (Dutch)",
+  "Mbabane": "Eswatini (Swaziland)",
+  "Kerguelen": "French S. Terr.",
+  "Lome": "Togo",
+  "Port_of_Spain": "Trinidad & Tobago",
+  "Funafuti": "Tuvalu",
+  "Dar_es_Salaam": "Tanzania",
+  "Kampala": "Uganda",
+  "Midway": "US minor outlying islands",
+  "Wake": "US minor outlying islands",
+  "Vatican": "Vatican City",
+  "St_Vincent": "St Vincent",
+  "Tortola": "Virgin Islands (UK)",
+  "St_Thomas": "Virgin Islands (US)",
+  "Wallis": "Wallis & Futuna",
+  "Aden": "Yemen",
+  "Mayotte": "Mayotte",
+  "Lusaka": "Zambia",
+  "Harare": "Zimbabwe"
 }
 
-const firstSlide = splideSlides[0];
-if (firstSlide.classList.contains('is-active')) {
+let userRegion;
+let userCity;
+let userCountry;
+let userTimeZone;
 
-  radioButtons.forEach((radioButton) => {
-    const radioInput = radioButton.querySelector('input');
-    const radioValue = radioInput.value;
+if (Intl) {
+  userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  let tzArr = userTimeZone.split("/");
+  userRegion = tzArr[0];
+  userCity = tzArr[tzArr.length - 1];
+  userCountry = timeZoneCityToCountry[userCity];
+}
 
-    radioInput.addEventListener('change', () => {
-      const form = formsObject[radioValue];
-      const lastSlide = splideSlides[splideSlides.length - 1];
+const countries = [
+  {
+    name: 'Canada',
+    flag: 'https://uploads-ssl.webflow.com/6476fc6c8c2c2d0eeb7a3345/66b0bb9e7ef11307efaf8b82_CA%20-%20Canada.png'
+  },
+  {
+    name: 'Канада',
+    flag: 'https://uploads-ssl.webflow.com/6476fc6c8c2c2d0eeb7a3345/66b0bb9e7ef11307efaf8b82_CA%20-%20Canada.png'
+  },
+  {
+    name: 'Україна',
+    flag: 'https://uploads-ssl.webflow.com/6476fc6c8c2c2d0eeb7a3345/66b0a24b7747cea2be9a07b6_UA%20-%20Ukraine.png'
+  },
+  {
+    name: 'Увесь світ',
+    flag: 'https://uploads-ssl.webflow.com/6476fc6c8c2c2d0eeb7a3345/66b0c4785f3a461e374a3e7f_icon-globe.svg',
+    flagLight: 'https://uploads-ssl.webflow.com/6476fc6c8c2c2d0eeb7a3345/66b0bc5c3e26bac51195991e_icon-globe.svg'
+  },
+  {
+    name: 'International',
+    flag: 'https://uploads-ssl.webflow.com/6476fc6c8c2c2d0eeb7a3345/66b0c4785f3a461e374a3e7f_icon-globe.svg',
+    flagLight: 'https://uploads-ssl.webflow.com/6476fc6c8c2c2d0eeb7a3345/66b0bc5c3e26bac51195991e_icon-globe.svg'
+  }
+]
 
-      lastSlide.innerHTML = form;
-      checkRadioChecked()
+const langList = document.querySelectorAll('.lang-dropdown__list-content');
+const langDropdownToggle = document.querySelector('.lang-dropdown__toggle');
+const langDropdownToggleFlag = langDropdownToggle ? langDropdownToggle.querySelector('.lang-dropdown__toggle-flag') : null;
+const langDropdownToggleCountry = langDropdownToggle ? langDropdownToggle.querySelector('.text-size-0-875') : null;
+const currentFlagElement = document.querySelector('.current-lang__flag');
+const currentCountryElement = document.querySelector('.current-lang__country');
+const langListItem = document.querySelectorAll('.lang-dropdown__list-item');
+const localLinks = document.querySelectorAll('.local-link');
+
+// Local Storage handling
+function setCountryToStorage(country) {
+  localStorage.setItem('country', country);
+}
+
+function getCountryFromStorage() {
+  return localStorage.getItem('country');
+}
+
+function resetCountryStorage() {
+  localStorage.removeItem('country');
+}
+
+// function to change country/language
+function changeLang(langCountry) {
+  if (langDropdownToggleCountry && currentCountryElement) {
+    langDropdownToggleCountry.textContent = langCountry.textContent;
+    currentCountryElement.textContent = `${langCountry.textContent}?`;
+  }
+
+  if (langDropdownToggleFlag && currentFlagElement) {
+    countries.forEach((country) => {
+      if (country.name === langCountry.textContent) {
+        langDropdownToggleFlag.src = country.flag;
+        currentFlagElement.src = country.flagLight ? country.flagLight : country.flag;
+      }
     });
-  });
-}
+  }
 
-function checkRadioChecked() {
-  radioButtons.forEach((radioButton) => {
-    const radioInput = radioButton.querySelector('input');
-
-    if (radioInput.checked) {
-      const radioValue = radioInput.value;
-      enableButton(splideNext)
+  langListItem.forEach((item) => {
+    const currentLangCountry = item.querySelector('.text-size-0-75');
+    if (currentLangCountry) {
+      if (langCountry.textContent === currentLangCountry.textContent) {
+        item.classList.add('is--active');
+      } else {
+        item.classList.remove('is--active');
+      }
     }
   });
 }
 
-function disableButton(button) {
-  button.classList.add('is--disabled');
+function changeLangByCountry(country) {
+  localLinks.forEach((link) => {
+    if ((country === "Україна" && link.hreflang === "uk") ||
+      (country === "Canada" && link.hreflang === "en") ||
+      (country === "Увесь світ" && link.hreflang === "uk") ||
+      (country === "International" && link.hreflang === "en") ||
+      (country === "Канада" && link.hreflang === "uk")) {
+      link.click();
+    }
+  });
 }
 
-function enableButton(button) {
-  button.classList.remove('is--disabled');
-}
-
-slider.on('moved', () => {
-  const activeSlide = splideSlides[slider.index];
-  const lastSlide = splideSlides[splideSlides.length - 1];
-
-  disableButton(splideNext);
-
-  const requiredFields = activeSlide.querySelectorAll('[required]');
-  const requiredFieldthLength = requiredFields.length;
-
-  if (requiredFields > 0) {
-    requiredFields.forEach((requiredField) => {
-      requiredField.addEventListener('input', () => {
-        const filledFields = activeSlide.querySelectorAll('[required].cc-error');
-        const filledFieldsLength = filledFields.length;
-
-        if (filledFieldsLength === requiredFieldthLength) {
-          disableButton(splideNext);
-        } else {
-          enableButton(splideNext);
-        }
-      });
-    });
+if (!getCountryFromStorage()) {
+  if (userCountry === "Canada") {
+    setCountryToStorage("Canada");
+  } else if (userCountry === "Ukraine") {
+    setCountryToStorage("Україна");
   } else {
-    enableButton(splideNext);
+    setCountryToStorage("International");
   }
+}
 
+langListItem.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    if (!item.classList.contains('is--active')) {
+      const langCountryElement = item.querySelector('.text-size-0-75');
+      if (langCountryElement) {
+        changeLang(langCountryElement);
+        setCountryToStorage(langCountryElement.textContent);
+        changeLangByCountry(langCountryElement.textContent);
+      }
+    }
+  });
 
-  if (activeSlide === splideSlides[0]) {
-    checkRadioChecked()
+  const storedCountry = getCountryFromStorage();
+  const itemLangCountry = item.querySelector('.text-size-0-75');
+  if (storedCountry && itemLangCountry && storedCountry === itemLangCountry.textContent) {
+    changeLang(itemLangCountry);
   }
 });
+
+// setting styles for current country
+const styleElement = document.createElement('style');
+const storedCountry = getCountryFromStorage();
+
+if (storedCountry) {
+  if (storedCountry === "Україна") {
+    styleElement.innerHTML = `
+            [data-lang="uk"]{ display: block; }
+            [data-lang="ca"]{ display: none; }
+            [data-lang="ca-uk"]{ display: none; }
+            [data-lang="international"]{ display: none; }
+            [data-lang="international-uk"]{ display: none; }
+            [data-lang="uk-global"]{ display: block; }
+            [data-lang="en-global"]{ display: none; }
+        `;
+  } else if (storedCountry === "Canada") {
+    styleElement.innerHTML = `
+            [data-lang="uk"]{ display: none; }
+            [data-lang="ca"]{ display: block; }
+            [data-lang="ca-uk"]{ display: none; }
+            [data-lang="international"]{ display: none; }
+            [data-lang="international-uk"]{ display: none; }
+            [data-lang="uk-global"]{ display: none; }
+            [data-lang="en-global"]{ display: block; }
+        `;
+  } else if (storedCountry === "Увесь світ") {
+    styleElement.innerHTML = `
+            [data-lang="uk"]{ display: none; }
+            [data-lang="ca"]{ display: none; }
+            [data-lang="ca-uk"]{ display: none; }
+            [data-lang="international"]{ display: none; }
+            [data-lang="international-uk"]{ display: block; }
+            [data-lang="uk-global"]{ display: block; }
+            [data-lang="en-global"]{ display: none; }
+        `;
+  } else if (storedCountry === "International") {
+    styleElement.innerHTML = `
+            [data-lang="uk"]{ display: none; }
+            [data-lang="ca"]{ display: none; }
+            [data-lang="ca-uk"]{ display: none; }
+            [data-lang="international"]{ display: block; }
+            [data-lang="international-uk"]{ display: none; }
+            [data-lang="uk-global"]{ display: none; }
+            [data-lang="en-global"]{ display: block; }
+        `;
+  } else if (storedCountry === "Канада") {
+    styleElement.innerHTML = `
+            [data-lang="uk"]{ display: none; }
+            [data-lang="ca"]{ display: none; }
+            [data-lang="ca-uk"]{ display: block; }
+            [data-lang="international"]{ display: none; }
+            [data-lang="international-uk"]{ display: none; }
+            [data-lang="uk-global"]{ display: block; }
+            [data-lang="en-global"]{ display: none; }
+        `;
+  }
+
+  document.head.appendChild(styleElement);
+}
+
+const langBanner = document.querySelector('.nav-lang__info');
+const langBannerClosers = document.querySelectorAll('.is--close-lang');
+const langSidebarOpen = document.querySelector('.is--open-lang-sidebar');
+const langSidebar = document.querySelector('.lang-sidebar');
+const langSidebarClose = langSidebar ? langSidebar.querySelector('.lang-sidebar__close') : null;
+const navbar = document.querySelector('.navbar');
+
+if (langBanner && navbar) {
+  langBannerClosers.forEach((closer) => {
+    closer.addEventListener('click', () => {
+      langBanner.classList.add('is--hidden');
+      navbar.style.paddingTop = '0';
+    });
+  });
+}
+
+if (langSidebarOpen && langSidebar && navbar) {
+  langSidebarOpen.addEventListener('click', () => {
+    langSidebar.classList.add('is--open');
+    langBanner.classList.add('is--hidden');
+    navbar.style.paddingTop = '0';
+  });
+}
+
+if (langSidebarClose && langSidebar) {
+  langSidebarClose.addEventListener('click', () => {
+    langSidebar.classList.remove('is--open');
+  });
+}
